@@ -8,7 +8,7 @@ const initialColor = {
   code: { hex: '' }
 };
 
-const ColorList = ({ colors, updateColors }) => {
+const ColorList = ({ colors, updateColors, getColorsList }) => {
   const [editing, setEditing] = useState(false);
   const [colorToEdit, setColorToEdit] = useState(initialColor);
 
@@ -19,7 +19,7 @@ const ColorList = ({ colors, updateColors }) => {
   };
 
   // useEffect(() => {
-  //   updateColors();
+  //   getColorsList();
   // }, []);
 
   const saveEdit = (e) => {
@@ -40,6 +40,7 @@ const ColorList = ({ colors, updateColors }) => {
           })
         );
         setEditing(false);
+        getColorsList();
       })
       .catch((err) => {
         console.log(err.message);
@@ -53,6 +54,7 @@ const ColorList = ({ colors, updateColors }) => {
       .then((res) => {
         updateColors(colors.filter((color) => color.id !== res.data));
         console.log(colors);
+        getColorsList();
       })
       .catch((err) => {
         console.log(err.message);

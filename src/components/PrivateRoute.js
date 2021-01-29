@@ -15,6 +15,3 @@ export default function PrivateRoute({ component: Component, ...rest }) {
     />
   );
 }
-
-//Task List:
-//1. Build a PrivateRoute component that redirects if user is not logged in
