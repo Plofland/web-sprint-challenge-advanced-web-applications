@@ -18,6 +18,11 @@ const BubblePage = () => {
         console.log(err);
       });
   }, []);
+  console.log(colorList);
+
+  // useEffect(() => {
+  //   setColorList();
+  // }, []);
 
   return (
     <>

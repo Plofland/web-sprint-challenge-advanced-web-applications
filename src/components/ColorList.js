@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 // import axios from 'axios';
 import EditMenu from './EditMenu';
 import axiosWithAuth from '../utils/axiosWithAuth';
@@ -18,6 +18,10 @@ const ColorList = ({ colors, updateColors }) => {
     // console.log(colorToEdit);
   };
 
+  // useEffect(() => {
+  //   updateColors();
+  // }, []);
+
   const saveEdit = (e) => {
     e.preventDefault();
     // console.log(colorToEdit);
@@ -26,7 +30,15 @@ const ColorList = ({ colors, updateColors }) => {
       .then((res) => {
         // console.log(res.data);
         console.log('EDIT WORKING');
-        // updateColors(res.data);
+        updateColors(
+          colors.map((color) => {
+            if (color.id === res.id) {
+              return res.data;
+            } else {
+              return color;
+            }
+          })
+        );
         setEditing(false);
       })
       .catch((err) => {
@@ -35,17 +47,14 @@ const ColorList = ({ colors, updateColors }) => {
   };
 
   const deleteColor = (color) => {
-    // console.log(color);
+    console.log(color);
     axiosWithAuth()
-      .delete(`/colors/${color.id}`) //type error
-      .then(() => {
-        // console.log(res);
-        console.log(color);
-        console.log('DELETE CAME THROUGH');
-        updateColors();
+      .delete(`/colors/${color.id}`)
+      .then((res) => {
+        updateColors(colors.filter((color) => color.id !== res.data));
+        console.log(colors);
       })
       .catch((err) => {
-        // console.log(colorToEdit);
         console.log(err.message);
       });
   };
