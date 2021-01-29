@@ -32,7 +32,7 @@ Commit your code regularly and meaningfully. This helps both you (in case you ev
 - [x] Clone your OWN version of the repository (Not Lambda's by mistake!)
 - [x] Create a new branch: git checkout -b `<firstName-lastName>`.
 - [x] Implement the project on your newly created `<firstName-lastName>` branch, committing changes regularly
-- [ ] Push commits: git push origin `<firstName-lastName>`
+- [x] Push commits: git push origin `<firstName-lastName>`
 - [x] **LOOK** at the files in your root directory and notice it' is just a plain ol' React App that we've built using create-react-app.
 - [x] **RUN** npm install install your dependences
 - [x] **RUN** npm start to fire up your React application.
