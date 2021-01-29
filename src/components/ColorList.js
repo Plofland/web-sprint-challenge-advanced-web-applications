@@ -21,10 +21,10 @@ const ColorList = ({ colors, updateColors }) => {
   const saveEdit = (e) => {
     e.preventDefault();
     // axiosWithAuth()
-    //   .put(`/colors${colorToEdit.id}`, colorToEdit)
+    //   .put(`/colors/${color.id}`, colorToEdit)
     //   .then((res) => {
     //     console.log(res);
-    //     console.log('WORKING');
+    //     console.log('EDIT WORKING');
     //     setEditing(false);
     //   })
     //   .catch((err) => {
@@ -33,13 +33,17 @@ const ColorList = ({ colors, updateColors }) => {
   };
 
   const deleteColor = (color) => {
+    // console.log(color);
     axiosWithAuth()
-      .delete(`/colors${color.id}`, colorToEdit)
-      .then((res) => {
-        console.log(res);
+      .delete(`/colors/${color.id}`) //type error
+      .then(() => {
+        // console.log(res);
+        console.log(color);
         console.log('DELETE CAME THROUGH');
+        updateColors();
       })
       .catch((err) => {
+        // console.log(colorToEdit);
         console.log(err.message);
       });
   };

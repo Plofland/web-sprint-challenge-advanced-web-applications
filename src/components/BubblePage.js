@@ -28,6 +28,3 @@ const BubblePage = () => {
 };
 
 export default BubblePage;
-
-//Task List:
-//1. Make an axios call to retrieve all color data and push to state on mounting.
