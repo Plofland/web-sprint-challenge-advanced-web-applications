@@ -20,16 +20,18 @@ const ColorList = ({ colors, updateColors }) => {
 
   const saveEdit = (e) => {
     e.preventDefault();
-    // axiosWithAuth()
-    //   .put(`/colors/${color.id}`, colorToEdit)
-    //   .then((res) => {
-    //     console.log(res);
-    //     console.log('EDIT WORKING');
-    //     setEditing(false);
-    //   })
-    //   .catch((err) => {
-    //     console.log(err.message);
-    //   });
+    // console.log(colorToEdit);
+    axiosWithAuth()
+      .put(`/colors/${colorToEdit.id}`, colorToEdit)
+      .then((res) => {
+        // console.log(res.data);
+        console.log('EDIT WORKING');
+        // updateColors(res.data);
+        setEditing(false);
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
   };
 
   const deleteColor = (color) => {
