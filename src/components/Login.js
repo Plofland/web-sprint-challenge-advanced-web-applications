@@ -18,7 +18,6 @@ const Login = () => {
       ...formValues,
       [name]: value
     });
-    console.log(formValues);
   };
 
   const handleLogin = (e) => {
@@ -27,6 +26,7 @@ const Login = () => {
       .post('/login', formValues)
       .then((res) => {
         localStorage.setItem('token', res.data.payload);
+        window.location = 'http://localhost:3000/bubbles-page';
       })
       .catch((err) => {
         console.log(err);
