@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from 'react';
-// import axios from 'axios';
-import axiosWithAuth from '../utils/axiosWithAuth';
+import React, { useState } from 'react';
+import axiosWithAuth from '../helpers/axiosWithAuth';
 
 const Login = () => {
   const [formValues, setFormValues] = useState({
