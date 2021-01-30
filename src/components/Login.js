@@ -7,8 +7,7 @@ const Login = () => {
     username: '',
     password: ''
   });
-
-  // useEffect({}, []);
+  const [errorStatus, setErrorStaus] = useState('');
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -27,25 +26,34 @@ const Login = () => {
         window.location = 'http://localhost:3000/bubbles-page';
       })
       .catch((err) => {
-        console.log(err);
+        console.log(err.response.data.error);
+        // const loginError = 'Username or Password not valid';
+        setErrorStaus(err.response.data.error);
       });
   };
 
   return (
     <>
       <form onSubmit={handleLogin}>
-        <input
-          type="text"
-          name="username"
-          value={formValues.username}
-          onChange={handleChange}
-        />
-        <input
-          type="password"
-          name="password"
-          value={formValues.password}
-          onChange={handleChange}
-        />
+        <label htmlFor="Username">
+          Username:
+          <input
+            type="text"
+            name="username"
+            value={formValues.username}
+            onChange={handleChange}
+          />
+        </label>
+        <label htmlFor="Password">
+          Password:
+          <input
+            type="password"
+            name="password"
+            value={formValues.password}
+            onChange={handleChange}
+          />
+        </label>
+        <p>{errorStatus}</p>
         <button>Log In</button>
       </form>
     </>

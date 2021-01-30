@@ -106,7 +106,7 @@ export const handlers = [
     } else {
       return res(
         ctx.status(403),
-        ctx.json({ error: 'Username or Password incorrect. Please see Readme' })
+        ctx.json({ error: 'Username or Password not valid.' })
       );
     }
   }),

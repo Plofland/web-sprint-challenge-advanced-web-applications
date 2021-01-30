@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 // import axios from 'axios';
 import EditMenu from './EditMenu';
 import axiosWithAuth from '../utils/axiosWithAuth';
@@ -15,16 +15,10 @@ const ColorList = ({ colors, updateColors, getColorsList }) => {
   const editColor = (color) => {
     setEditing(true);
     setColorToEdit(color);
-    // console.log(colorToEdit);
   };
-
-  // useEffect(() => {
-  //   getColorsList();
-  // }, []);
 
   const saveEdit = (e) => {
     e.preventDefault();
-    // console.log(colorToEdit);
     axiosWithAuth()
       .put(`/colors/${colorToEdit.id}`, colorToEdit)
       .then((res) => {
@@ -99,7 +93,3 @@ const ColorList = ({ colors, updateColors, getColorsList }) => {
 };
 
 export default ColorList;
-
-//Task List:
-//1. Complete the saveEdit functions by making a put request for saving colors. (Think about where will you get the id from...)
-//2. Complete the deleteColor functions by making a delete request for deleting colors.
